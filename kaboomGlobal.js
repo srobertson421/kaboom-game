@@ -7,3 +7,7 @@ export const engine = kaboom({
   background: [0,0,0],
   // scale: 6
 });
+
+if(!engine.isFocused()) {
+  engine.focus();
+}

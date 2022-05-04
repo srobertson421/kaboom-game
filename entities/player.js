@@ -7,6 +7,7 @@ import {
 } from '../constants.js';
 import { setCurrentLevel, getCurrentLevel } from '../state/currentLevel.js';
 
+// Singleton pattern - constructor run once
 class Player {
   constructor(pos, direction) {
     this.animSpeed = PLAYER_ANIM_SPEED;
@@ -90,7 +91,7 @@ class Player {
   init() {
     this.player = engine.add([
       engine.pos(this.pos.x, this.pos.y),
-      engine.sprite('player', { anim: 'idle' + this.direction }),
+      engine.sprite('player', { anim: this.player ? this.player.curAnim() : 'idle' + this.direction }),
       engine.origin('bot'),
       engine.area({ width: 10, height: 8 }),
       engine.solid()
@@ -151,7 +152,6 @@ class Player {
     });
   
     this.player.onCollide('exit', exitTile => {
-      console.log(exitTile)
       if(exitTile.is('right')) {
         this.pos.x = 16;
         setCurrentLevel(getCurrentLevel().x + 1, getCurrentLevel().y);

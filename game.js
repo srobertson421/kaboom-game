@@ -1,7 +1,7 @@
 import { engine } from './kaboomGlobal.js';
 import Player from './entities/player.js';
 import { TILE_WIDTH, TILE_HEIGHT } from './constants.js';
-import { getCurrentLevel, setCurrentLevel, getCurrentLevelKey } from './state/currentLevel.js';
+import { getCurrentLevelKey } from './state/currentLevel.js';
 
 const player = new Player({x: 50, y: 50}, 'down');
 player.load();
